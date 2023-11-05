@@ -9,7 +9,8 @@
         <p>The future of hosting at your fingertips.</p>
         <br>
         <a class="">Quick Routes:</a><br>
-        <nuxt-link to="/login"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ">Login</button></nuxt-link>
+        <nuxt-link to="/panel/login"><button class="bg-red-500 hover:bg-red-700 w-30 h-15 text-white font-bold py-2 px-4 rounded ">Login</button></nuxt-link>
+        <nuxt-link to="/hokkaido"><button class="bg-red-500 hover:bg-red-700 w-30 h-15 text-white font-bold py-2 px-4 rounded ">Secret Easter Egg</button></nuxt-link>
     </div>
     <div class="xenism">
         <br>
@@ -37,7 +38,7 @@
             background-color: rgb(35, 35, 35);
     }
     .introduction a {
-        margin-left: 50px;
+        margin-left: 25px;
         font-size: 150%;
     }
     .xenism {
@@ -53,7 +54,7 @@
         text-align: center;
     }
     .introduction p {
-        margin-left: 50px;
+        margin-left: 25px;
         font-size: 150%;
         font-family: 'Courier New', Courier, monospace;
     }
@@ -73,7 +74,7 @@
     }
     .introduction h1 {
         font-size: 150px;
-        margin-left: 50px;
+        margin-left: 25px;
         src: url('/fonts/Poppins-SemiBold.ttf') format('truetype');
         font-family: 'Poppins', sans-serif;
         width: 50%;
