@@ -1,4 +1,12 @@
 <script setup lang="ts">
+    try {
+        if (process.env.login_screen == 'true') {
+            navigateTo('/panel/login')
+        }
+    } catch (exceptionVar) {
+        console.log('No .env file found.')
+    }
+
 </script>
 <template>
     <head>
@@ -75,8 +83,7 @@
     .introduction h1 {
         font-size: 150px;
         margin-left: 25px;
-        src: url('/fonts/Poppins-SemiBold.ttf') format('truetype');
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Poppins-SemiBold', sans-serif;
         width: 50%;
         word-wrap: break-word;
     }
