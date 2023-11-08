@@ -14,7 +14,7 @@
             <input type="password" placeholder="Password" required><br><br>
             <button class="btn">Login</button><br>
             <div class="r">
-                <a href="/panel/signup" class="r">Register</a>
+                <a href="/signup" class="r"> Signup </a>
                 <a href="/panel/forgot" class="r">Forgot Password</a>
             </div>
         </form>
