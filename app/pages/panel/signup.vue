@@ -5,7 +5,7 @@
     <div class="img">
     </div>
     <div class="arti">
-        <a href="/" class="x">Xen</a> <br>
+        <a href="/" class="x">Xena</a> <br>
         <p>Signup for Xen with your username and password.</p><br>
         <form>
             <label for="username:">Username:</label><br>
