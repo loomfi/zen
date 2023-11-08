@@ -6,16 +6,18 @@
     </div>
     <div class="arti">
         <a href="/" class="x">Xen</a> <br>
-        <p>Log into Xen with your username and password.</p><br>
+        <p>Register for Xen with your username and password.</p><br>
         <form>
             <label for="username:">Username:</label><br>
             <input type="text" placeholder="Username" required><br>
+            <label for="email:">Email:</label><br>
+            <input type="email" placeholder="Email" required><br>
             <label for="password:">Password:</label><br>
             <input type="password" placeholder="Password" required><br><br>
-            <button class="btn">Login</button><br>
+            <button class="btn">Signup</button><br>
             <div class="r">
-                <a href="/signup" class="r"> Signup </a>
-                <a href="/panel/forgot" class="r">Forgot Password</a>
+                <a href="/panel/login" class="r">Login</a>
+                <a href="/legal" class="r">Legal Hub</a>
             </div>
         </form>
     </div>
@@ -23,7 +25,7 @@
 </template>
 <style scoped>
 .img {
-    background-image: url('/images/login/background.jpg');
+    background-image: url('/images/signup/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
