@@ -1,3 +1,12 @@
+<script setup lang="tsx">
+    import {SHA256} from "jscrypto/es6/SHA256";
+    const password = ''
+    const username = ''
+    function sendLoginCredentials(username: string, password: string) {
+        var hashed_string = SHA256.hash(password).toString()
+        console.log(username,hashed_string)
+    }
+</script>
 <template>
     <head>
         <title>Xen | Login</title>
@@ -7,17 +16,17 @@
     <div class="arti">
         <a href="/" class="x">Xen</a> <br>
         <p>Log into Xen with your username and password.</p><br>
-        <form>
+        <!-- <form> -->
             <label for="username:">Username:</label><br>
-            <input type="text" placeholder="Username" required><br>
+            <input v-model="username" type="text" placeholder="Username" required><br>
             <label for="password:">Password:</label><br>
-            <input type="password" placeholder="Password" required><br><br>
-            <button class="btn">Login</button><br>
+            <input v-model="password" type="password" placeholder="Password" required><br><br>
+            <button class="btn" @click="sendLoginCredentials(username, password)">Login</button><br>
             <div class="r">
                 <a href="/panel/signup" class="r"> Signup </a>
                 <a href="/panel/forgot" class="r">Forgot Password</a>
             </div>
-        </form>
+        <!-- </form> -->
     </div>
 
 </template>
