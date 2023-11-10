@@ -1,9 +1,9 @@
-import {SHA256} from "jscrypto/es6/SHA256";
+import * as crypto from "crypto";
 export default eventHandler(async event => {
     const body = await readBody(event)
     var username = body['username']
     var password = body['password']
-    if (username == 'admin' && password == SHA256.hash('admin').toString()) {
+    if (username == 'admin' && crypto.createHash('sha256').update(password).digest('hex') == crypto.createHash('sha256').update('admin').digest('hex')) {
         return {
             'msg': 'Login successful! Redirecting you...',
             'redirect': '/dashboard',

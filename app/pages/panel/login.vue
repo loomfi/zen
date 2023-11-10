@@ -1,12 +1,10 @@
 <script setup lang="tsx">
-    import {SHA256} from "jscrypto/es6/SHA256";
     import { ref } from 'vue';
     const password = ref('');
     const username = ref('');
     const error = ref('');
     const success = ref('');
     async function sendLoginCredentials(username: string, password: string) {
-        var hashed_string = SHA256.hash(password).toString()
         const loginCreds = await useFetch('http://localhost:3000/api/login', {
             method: 'POST',
             headers: {
@@ -14,7 +12,7 @@
             },
             body: JSON.stringify({
                 username: username,
-                password: hashed_string
+                password: password
             })
         })
         if (loginCreds.data?._rawValue.synmsg == true) {
