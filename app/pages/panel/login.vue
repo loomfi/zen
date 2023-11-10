@@ -1,10 +1,34 @@
 <script setup lang="tsx">
     import {SHA256} from "jscrypto/es6/SHA256";
-    const password = ''
-    const username = ''
-    function sendLoginCredentials(username: string, password: string) {
+    import { ref } from 'vue';
+    const password = ref('');
+    const username = ref('');
+    const error = ref('');
+    const success = ref('');
+    async function sendLoginCredentials(username: string, password: string) {
         var hashed_string = SHA256.hash(password).toString()
-        console.log(username,hashed_string)
+        const loginCreds = await useFetch('http://localhost:3000/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: username,
+                password: hashed_string
+            })
+        })
+        if (loginCreds.data?._rawValue.synmsg == true) {
+            success.value = loginCreds.data?._rawValue.msg
+            error.value = ''
+            useCookie<{ name: string }>('user')
+            setTimeout(() => {
+                navigateTo(loginCreds.data?._rawValue.redirect)
+            }, 500);
+        }
+        else {
+            success.value = ''
+            error.value = loginCreds.data?._rawValue.msg
+        }
     }
 </script>
 <template>
@@ -16,18 +40,19 @@
     <div class="arti">
         <a href="/" class="x">Xen</a> <br>
         <p>Log into Xen with your username and password.</p><br>
-        <!-- <form> -->
-            <label for="username:">Username:</label><br>
-            <input v-model="username" type="text" placeholder="Username" required><br>
-            <label for="password:">Password:</label><br>
-            <input v-model="password" type="password" placeholder="Password" required><br><br>
-            <button class="btn" @click="sendLoginCredentials(username, password)">Login</button><br>
-            <div class="r">
-                <a href="/panel/signup" class="r"> Signup </a>
-                <a href="/panel/forgot" class="r">Forgot Password</a>
-            </div>
-        <!-- </form> -->
-    </div>
+        <p v-if="success != '' && success != null" class="success"><span>{{ success }}</span></p>
+        <p v-if="error != '' && error != null" class="alert"><span>{{ error }}</span></p>
+        <label for="username:">Username:</label><br>
+        <input v-model="username" type="text" placeholder="Username" required><br>
+        <label for="password:">Password:</label><br>
+        <input v-model="password" type="password" placeholder="Password" required><br><br>
+        <button class="btn" @click="sendLoginCredentials(username, password)">Login</button><br>
+        <div class="r">
+            <a href="/panel/signup" class="r"> Signup </a>
+            <a href="/panel/forgot" class="r">Forgot Password</a>
+        </div>
+
+</div>
 
 </template>
 <style scoped>
@@ -38,6 +63,29 @@
     height: 100vh;
     background-blend-mode: color;
     filter: blur(5.5px);
+}
+.success {
+    background-color: rgb(20, 11, 200);
+    border-radius: 10px;
+    width: 80%;
+    height: 40px;
+    color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    margin-bottom: 15px;
+}
+.success:hover {
+    background-color: rgb(11, 31, 255);
+    transition: 0.5s;
+}
+.success span {
+    pointer-events: none;
+    user-select: none;
 }
 .arti {
     color: white;
@@ -68,6 +116,10 @@
     font-size: 75px;
     font-family: 'Poppins-Bold', sans-serif;
 }
+.alert span {
+    pointer-events: none;
+    user-select: none;
+}
 .btn {
     background-color: rgb(34, 34, 34);
     width: 80%;
@@ -75,6 +127,25 @@
     border-radius: 10px;
     color: white;
     margin-bottom: 15px;
+    transition: 0.5s;
+}
+.alert {
+    background-color: rgb(200, 11, 11);
+    border-radius: 10px;
+    width: 80%;
+    height: 40px;
+    color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    margin-bottom: 15px;
+}
+.alert:hover {
+    background-color: rgb(255, 11, 11);
     transition: 0.5s;
 }
 .btn:hover {
