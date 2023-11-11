@@ -5,7 +5,7 @@
     const error = ref('');
     const success = ref('');
     async function sendLoginCredentials(username: string, password: string) {
-        const loginCreds = await useFetch('http://localhost:3000/api/login', {
+        const loginCreds = await useFetch('/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
