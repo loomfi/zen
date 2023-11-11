@@ -1,5 +1,6 @@
 <script setup lang="tsx">
     import { ref } from 'vue';
+    import { SHA256 } from 'jscrypto';
     const password = ref('');
     const username = ref('');
     const error = ref('');
@@ -12,7 +13,7 @@
             },
             body: JSON.stringify({
                 username: username,
-                password: password
+                password: SHA256.hash(password).toString(),
             })
         })
         if (loginCreds.data?._rawValue.synmsg == true) {
