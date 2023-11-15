@@ -20,11 +20,11 @@
             success.value = register.data?._rawValue.msg
             error.value = ''
             setTimeout(() => {
-                navigateTo('/login')
+                navigateTo('/panel/login')
             }, 500);
         }   else {
             success.value = ''
-            error.value = loginCreds.data?._rawValue.msg
+            error.value = register.data?._rawValue.msg
         }
          
     }
@@ -55,6 +55,34 @@
 
 </template>
 <style scoped>
+.success {
+    background-color: rgb(20, 11, 200);
+    border-radius: 10px;
+    width: 80%;
+    height: 40px;
+    color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    margin-bottom: 15px;
+}
+.success:hover {
+    background-color: rgb(11, 31, 255);
+    transition: 0.5s;
+}
+.success span {
+    pointer-events: none;
+    user-select: none;
+}
+
+.alert span {
+    pointer-events: none;
+    user-select: none;
+}
 .alert {
     background-color: rgb(200, 11, 11);
     border-radius: 10px;
