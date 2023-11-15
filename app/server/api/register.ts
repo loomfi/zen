@@ -6,10 +6,11 @@ export default eventHandler(async event => {
     const body = await readBody(event)
     var username = body['username']
     var password = body['password']
-    var email = body['email']
+    var email = JSON.parse(JSON.stringify(body['email']))
+    email = email._value
 
-    const user = await prisma.user.findFirst({where:{username:username}})
-    if (user != null) {
+    const usr = await prisma.user.findFirst({where:{username:username}})
+    if (usr != null) {
         return {
             'status': 400,
             'msg': 'Username already exists.'
@@ -18,11 +19,11 @@ export default eventHandler(async event => {
         var salt = crypto.randomBytes(16).toString('hex');
         var salt2 = crypto.randomBytes(16).toString('hex');
         var conjoined_password = salt2 + password + salt;
-        console.log(conjoined_password);
-        // const salted_password = crypto.createHash('sha256', )
-        // await prisma.user.create({data: {'username': username, 'password': salted_password, 'email': email, 'role': 'user', 'salt': salt}})
-        // return {
-        //     'status': 200
-        // }
+        const salted_password = crypto.createHash('sha256').update(conjoined_password).digest('hex');
+        await prisma.user.create({data: {'username': username, 'password': salted_password,'salt1': salt, 'salt2': salt2, 'email': email}})
+        return {
+            'status': 200,
+            'msg': 'User created.'
+        }
     }
 })

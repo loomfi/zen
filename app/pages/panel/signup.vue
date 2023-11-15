@@ -16,8 +16,10 @@
             body: JSON.stringify({
                 username: username,
                 password: SHA256.hash(password).toString(),
+                email: emails,
             })
         }) 
+         
     }
 </script>
 <template>
@@ -32,7 +34,7 @@
         <label for="username:" >Username:</label><br>
         <input type="text" v-model="username" placeholder="Username" required><br>
         <label for="email:">Email:</label><br>
-        <input type="email" v-model="emails" placeholder="Email" required><br>
+        <input type="email" v-model="emails.=" placeholder="Email" required><br>
         <label for="password:">Password:</label><br>
         <input type="password" v-model="password" placeholder="Password" required><br><br>
         <button class="btn" @click="register(username,password,emails)">Signup</button><br>
