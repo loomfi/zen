@@ -12,12 +12,15 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.9.3",
-    "nuxt": "^3.8.0",
+    "nuxt": "^3.8.1",
     "vue": "^3.3.7",
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@prisma/client": "5.6.0",
     "axios": "^1.6.1",
-    "jscrypto": "^1.0.3"
+    "jose": "^5.1.1",
+    "jscrypto": "^1.0.3",
+    "prisma": "^5.6.0"
   }
 }

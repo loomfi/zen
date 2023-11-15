@@ -1,3 +1,25 @@
+<script setup lang="tsx">
+    import { ref } from 'vue';
+    import { SHA256 } from 'jscrypto';
+    var password = ref('');
+    var username = ref('');
+    var emails = ref('');
+    var error = ref('');
+    var success = ref('');
+
+    async function register(username: string, password: string, email:string) {
+        const register = await useFetch('/api/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: username,
+                password: SHA256.hash(password).toString(),
+            })
+        }) 
+    }
+</script>
 <template>
     <head>
         <title>Xen | Login</title>
@@ -7,19 +29,17 @@
     <div class="arti">
         <a href="/" class="x">Xen</a> <br>
         <p>Signup for Xen with your username and password.</p><br>
-        <form>
-            <label for="username:">Username:</label><br>
-            <input type="text" placeholder="Username" required><br>
-            <label for="email:">Email:</label><br>
-            <input type="email" placeholder="Email" required><br>
-            <label for="password:">Password:</label><br>
-            <input type="password" placeholder="Password" required><br><br>
-            <button class="btn">Signup</button><br>
-            <div class="r">
-                <a href="/panel/login" class="r">Login</a>
-                <a href="/legal" class="r">Legal Hub</a>
-            </div>
-        </form>
+        <label for="username:" >Username:</label><br>
+        <input type="text" v-model="username" placeholder="Username" required><br>
+        <label for="email:">Email:</label><br>
+        <input type="email" v-model="emails" placeholder="Email" required><br>
+        <label for="password:">Password:</label><br>
+        <input type="password" v-model="password" placeholder="Password" required><br><br>
+        <button class="btn" @click="register(username,password,emails)">Signup</button><br>
+        <div class="r">
+            <a href="/panel/login" class="r">Login</a>
+            <a href="/legal" class="r">Legal Hub</a>
+        </div>
     </div>
 
 </template>
