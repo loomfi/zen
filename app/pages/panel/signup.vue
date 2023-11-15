@@ -16,18 +16,30 @@
                 email: emails,
             })
         }) 
+        if (register.data?._rawValue.status == 200) {
+            success.value = register.data?._rawValue.msg
+            error.value = ''
+            setTimeout(() => {
+                navigateTo('/login')
+            }, 500);
+        }   else {
+            success.value = ''
+            error.value = loginCreds.data?._rawValue.msg
+        }
          
     }
 </script>
 <template>
     <head>
-        <title>Xen | Login</title>
+        <title>Xen | Signup</title>
     </head>
     <div class="img">
     </div>
     <div class="arti">
         <a href="/" class="x">Xen</a> <br>
         <p>Signup for Xen with your username and password.</p><br>
+        <p v-if="success != '' && success != null" class="success"><span>{{ success }}</span></p>
+        <p v-if="error != '' && error != null" class="alert"><span>{{ error }}</span></p>
         <label for="username:" >Username:</label><br>
         <input type="text" v-model="username" placeholder="Username" required><br>
         <label for="email:">Email:</label><br>
@@ -43,6 +55,25 @@
 
 </template>
 <style scoped>
+.alert {
+    background-color: rgb(200, 11, 11);
+    border-radius: 10px;
+    width: 80%;
+    height: 40px;
+    color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    margin-bottom: 15px;
+}
+.alert:hover {
+    background-color: rgb(255, 11, 11);
+    transition: 0.5s;
+}
 .img {
     background-image: url('/images/signup/background.jpg');
     background-repeat: no-repeat;
