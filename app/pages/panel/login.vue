@@ -8,9 +8,6 @@
     async function sendLoginCredentials(username: string, password: string) {
         const loginCreds = await useFetch('/api/login', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
             body: JSON.stringify({
                 username: username,
                 password: SHA256.hash(password).toString(),
