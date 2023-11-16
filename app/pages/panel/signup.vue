@@ -6,7 +6,22 @@
     var emails = ref('');
     var error = ref('');
     var success = ref('');
-
+    try {
+        // Check the session utilising the sessionManager API & checks the JSON web tokens.
+        const x = await useFetch('/api/authentication/sessionManager', {
+            'method': 'POST',
+            'body': {
+                'cookie': useCookie('authentication').value
+            }
+        })
+        if (x.data.value?.valid == false) {
+            useCookie('authentication').value = null
+        }
+        else {
+            navigateTo('/panel')
+        }
+    } catch (e) {
+    }
     async function register(username: string, password: string, email:string) {
         const register = await useFetch('/api/authentication/register', {
             method: 'POST',

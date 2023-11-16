@@ -1,6 +1,7 @@
 <script setup lang="ts">
     var user = ""
     try {
+        // Check the session utilising the sessionManager API & checks the JSON web tokens.
         const x = await useFetch('/api/authentication/sessionManager', {
             'method': 'POST',
             'body': {
@@ -26,7 +27,7 @@
             <div class="dropdown-content" style="float: left;transform: translateX(-25%);">
                 <a href="https://blog.hubspot.com/">Blog</a>
                 <a href="https://academy.hubspot.com/">Academy</a>
-                <a href="https://www.youtube.com/user/hubspot">YouTube</a>
+                <a href="/panel/logout">Logout</a>
             </div>
         </div>
     </nav>
@@ -39,7 +40,8 @@
     .dropdown-content {
         display: none;
         position: absolute;
-        width: 150%;
+        width: 125%;
+        text-align: center;
         overflow: auto;
         background-color: #1e1e1e;
         border-radius: 10px;

@@ -5,6 +5,22 @@
     const username = ref('');
     const error = ref('');
     const success = ref('');
+    try {
+        // Check the session utilising the sessionManager API & checks the JSON web tokens.
+        const x = await useFetch('/api/authentication/sessionManager', {
+            'method': 'POST',
+            'body': {
+                'cookie': useCookie('authentication').value
+            }
+        })
+        if (x.data.value?.valid == false) {
+            useCookie('authentication').value = null
+        }
+        else {
+            navigateTo('/panel')
+        }
+    } catch (e) {
+    }
     async function sendLoginCredentials(username: string, password: string) {
         const loginCreds = await useFetch('/api/authentication/login', {
             method: 'POST',
