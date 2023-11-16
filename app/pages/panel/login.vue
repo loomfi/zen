@@ -6,17 +6,18 @@
     const error = ref('');
     const success = ref('');
     async function sendLoginCredentials(username: string, password: string) {
-        const loginCreds = await useFetch('/api/login', {
+        const loginCreds = await useFetch('/api/authentication/login', {
             method: 'POST',
             body: JSON.stringify({
                 username: username,
                 password: SHA256.hash(password).toString(),
+                ip: useFetch('https://api.ipify.org').data?._rawValue,
             })
         })
         if (loginCreds.data?._rawValue.synmsg == true) {
             success.value = loginCreds.data?._rawValue.msg
             error.value = ''
-            useCookie<{ name: string }>('user')
+            useCookie('authentication').value = loginCreds.data?._rawValue.token
             setTimeout(() => {
                 navigateTo(loginCreds.data?._rawValue.redirect)
             }, 500);

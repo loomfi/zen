@@ -8,7 +8,7 @@
     var success = ref('');
 
     async function register(username: string, password: string, email:string) {
-        const register = await useFetch('/api/register', {
+        const register = await useFetch('/api/authentication/register', {
             method: 'POST',
             body: JSON.stringify({
                 username: username,
