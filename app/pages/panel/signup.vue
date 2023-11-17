@@ -1,6 +1,6 @@
 <script setup lang="tsx">
     import { ref } from 'vue';
-    import { SHA256, SHA512 } from 'jscrypto';
+    import { SHA256 } from 'jscrypto';
     var password = ref('');
     var username = ref('');
     var emails = ref('');
@@ -13,7 +13,7 @@
             'method': 'POST',
             'body': {
                 'cookie': useCookie('authentication').value,
-                'ip': SHA512.hash(js.data.value).toString(),
+                'ip': SHA256.hash(js.data.value).toString(),
             }
         })
         if (x.data.value?.valid == false) {
