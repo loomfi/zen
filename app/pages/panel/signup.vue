@@ -1,17 +1,19 @@
 <script setup lang="tsx">
     import { ref } from 'vue';
-    import { SHA256 } from 'jscrypto';
+    import { SHA256, SHA512 } from 'jscrypto';
     var password = ref('');
     var username = ref('');
     var emails = ref('');
     var error = ref('');
     var success = ref('');
+    const js = await useFetch('https://api.ipify.org')
     try {
         // Check the session utilising the sessionManager API & checks the JSON web tokens.
         const x = await useFetch('/api/authentication/sessionManager', {
             'method': 'POST',
             'body': {
-                'cookie': useCookie('authentication').value
+                'cookie': useCookie('authentication').value,
+                'ip': SHA512.hash(js.data.value).toString(),
             }
         })
         if (x.data.value?.valid == false) {

@@ -1,6 +1,6 @@
 <script setup lang="tsx">
     import { ref } from 'vue';
-    import { SHA256 } from 'jscrypto';
+    import { SHA256, SHA512 } from 'jscrypto';
     const password = ref('');
     const username = ref('');
     const error = ref('');
@@ -13,7 +13,7 @@
             'method': 'POST',
             'body': {
                 'cookie': useCookie('authentication').value,
-                'ip': js.data.value,
+                'ip': SHA512.hash(js.data.value).toString(),
             }
         })
         if (x.data.value?.valid == false) {
@@ -30,7 +30,7 @@
             body: JSON.stringify({
                 username: username,
                 password: SHA256.hash(password).toString(),
-                ip: js.data.value,
+                ip: SHA512.hash(js.data.value).toString(),
             })
         })
         if (loginCreds.data?._rawValue.synmsg == true) {

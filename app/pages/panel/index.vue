@@ -1,13 +1,14 @@
 <script setup lang="ts">
     var user = ""
     const js = await useFetch('https://api.ipify.org')
+    import { SHA512 } from 'jscrypto';
     try {
         // Check the session utilising the sessionManager API & checks the JSON web tokens.
         const x = await useFetch('/api/authentication/sessionManager', {
             'method': 'POST',
             'body': {
                 'cookie': useCookie('authentication').value,
-                'ip': js.data.value,
+                'ip': SHA512.hash(js.data.value).toString(),
             }
         })
         if (x.data.value?.valid == false) {
