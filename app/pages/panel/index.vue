@@ -1,11 +1,13 @@
 <script setup lang="ts">
     var user = ""
+    const js = await useFetch('https://api.ipify.org')
     try {
         // Check the session utilising the sessionManager API & checks the JSON web tokens.
         const x = await useFetch('/api/authentication/sessionManager', {
             'method': 'POST',
             'body': {
-                'cookie': useCookie('authentication').value
+                'cookie': useCookie('authentication').value,
+                'ip': js.data.value,
             }
         })
         if (x.data.value?.valid == false) {

@@ -5,12 +5,15 @@
     const username = ref('');
     const error = ref('');
     const success = ref('');
+    const js = await useFetch('https://api.ipify.org')
+
     try {
         // Check the session utilising the sessionManager API & checks the JSON web tokens.
         const x = await useFetch('/api/authentication/sessionManager', {
             'method': 'POST',
             'body': {
-                'cookie': useCookie('authentication').value
+                'cookie': useCookie('authentication').value,
+                'ip': js.data.value,
             }
         })
         if (x.data.value?.valid == false) {
@@ -27,7 +30,7 @@
             body: JSON.stringify({
                 username: username,
                 password: SHA256.hash(password).toString(),
-                ip: useFetch('https://api.ipify.org').data?._rawValue,
+                ip: js.data.value,
             })
         })
         if (loginCreds.data?._rawValue.synmsg == true) {
