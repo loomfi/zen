@@ -13,7 +13,7 @@
             'method': 'POST',
             'body': {
                 'cookie': useCookie('authentication').value,
-                'ip': SHA256.hash(js.data.value).toString(),
+                'ip': js.data.value,
             }
         })
         if (x.data.value?.valid == false) {

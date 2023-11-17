@@ -13,7 +13,7 @@
             'method': 'POST',
             'body': {
                 'cookie': useCookie('authentication').value,
-                'ip': SHA256.hash(js.data.value).toString(),
+                'ip': js.data.value,
             }
         })
         if (x.data.value?.valid == false) {
@@ -30,7 +30,7 @@
             body: JSON.stringify({
                 username: username,
                 password: SHA256.hash(password).toString(),
-                ip: SHA512.hash(js.data.value).toString(),
+                ip: js.data.value,
             })
         })
         if (loginCreds.data?._rawValue.synmsg == true) {
