@@ -18,6 +18,7 @@ import 'assets/base.css'
         </div>
         <div v-else>
             <h1>Something went wrong...</h1>
+            {{ error }}
         </div>
     </h1>
 </template>
