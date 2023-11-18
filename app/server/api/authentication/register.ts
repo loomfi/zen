@@ -8,7 +8,6 @@ export default eventHandler(async event => {
     var password = body['password']
     var email = JSON.parse(JSON.stringify(body['email']))
     email = email._value
-
     const usr = await prisma.user.findFirst({where:{username:username}})
     if (usr != null) {
         return {

@@ -9,7 +9,7 @@ export default eventHandler(async event => {
     var username = body['username']
     var password = body['password']
     const ip = body['ip']
-    const user = await prisma.user.findFirst({where:{username:username}})
+    const user = await prisma.user.findUnique({where:{username:username}})
     if (user != null) {
         const salted_password = crypto.createHash('sha256').update(user?.salt2 + password + user?.salt1).digest('hex')
         if (salted_password == user?.password) {

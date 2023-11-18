@@ -27,14 +27,39 @@
         <div class="dropdown">
             <button>{{user}}</button>
             <div class="dropdown-content" style="float: left;transform: translateX(-25%);">
-                <a href="https://blog.hubspot.com/">Blog</a>
-                <a href="https://academy.hubspot.com/">Academy</a>
+                <a href="/panel/settings">Settings</a>
                 <a href="/panel/logout">Logout</a>
             </div>
         </div>
     </nav>
+    <div class="welcome">
+        <h1>Hello, {{user}}!</h1>
+        <p>Welcome to the Xen panel.</p>
+    </div>
+
 </template>
 <style scoped>
+    .welcome {
+        margin-left: 15%;
+    }
+    .welcome h1 {
+        font-family: 'Poppins-Bold', sans-serif;
+        font-size: 3rem;
+        margin-left: 1rem;
+        word-wrap: break-word;
+        width: 60%;
+        transform: translateX(-20px);
+        margin-top: 5%;
+        font-size: 60px;
+        transition: 500ms;
+        color: white;
+    }
+    .welcome p {
+        color: white;
+        font-family: 'Poppins-Bold', sans-serif;
+        font-size: 1.5rem;
+        transition: 500ms;
+    }
     .dropdown {
         display: inline-block;
         position: relative;
