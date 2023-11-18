@@ -22,6 +22,9 @@
     }
 </script>
 <template>
+    <head>
+        <title>Xen | Dashboard</title>
+    </head>
     <nav class="nav">
         <a href="/" class="logo"><strong>Xen</strong></a>
         <div class="dropdown">
@@ -32,13 +35,53 @@
             </div>
         </div>
     </nav>
-    <div class="welcome">
+    <!-- <div class="welcome">
         <h1>Hello, {{user}}!</h1>
         <p>Welcome to the Xen panel.</p>
+    </div> -->
+    <br>
+    <div class="panel">
+        <h1 class="poppins">My servers:</h1>
+        <div class="servers-grid">
+            <div class="servers">
+                <h1 class="f">Server A</h1>
+                <p><Icon name="tabler:network" color="white" /> 127.0.0.1:4094</p>
+                <p><Icon name="fluent:ram-20-regular" color="white" />RAM: 1/8GB</p>
+                <p><Icon name="mdi:storage" color="white" /> Storage: 18GB</p>
+                <p><Icon name="carbon:ibm-z-os-ai-control-interface" color="white" /> OS: Xen Beta</p>
+                <p><Icon name="heroicons-outline:status-online" color="white" /> Currently Online!</p>
+            </div>
+        </div>
     </div>
 
 </template>
 <style scoped>
+    .servers-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    .servers {
+        background-color: #1e1e1e;
+        border-radius: 10px;
+        width: fit-content;
+        transition: 500ms;
+    }
+    .servers .f {
+        font-family: 'Poppins-Light', sans-serif;
+        font-size: 50px;
+        transition: 500ms;
+        color: white;
+        text-align: center;
+    }
+    .panel .poppins {
+        font-family: 'Poppins-Bold', sans-serif;
+        font-size: 40px;
+        transition: 500ms;
+        color: white;
+        text-align: center;
+    }
     .welcome {
         margin-left: 15%;
     }
@@ -56,7 +99,6 @@
     }
     .welcome p {
         color: white;
-        font-family: 'Poppins-Bold', sans-serif;
         font-size: 1.5rem;
         transition: 500ms;
     }

@@ -7,6 +7,10 @@
   font-family: "Poppins-SemiBold";
   src: local("Poppins-SemiBold"),     url(assets/fonts/Poppins-SemiBold.ttf) format("truetype");
 }
+@font-face {
+  font-family: "Poppins-Light";
+  src: local("Poppins-Light"),     url(assets/fonts/Poppins-Light.ttf) format("truetype");
+}
 :root {
     --vt-c-white: #ffffff;
     --vt-c-white-soft: #f8f8f8;
