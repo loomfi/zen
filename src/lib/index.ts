@@ -1,2 +1,3 @@
 // place files you want to import through the `$lib` alias in this folder.
-import './xen-core/themeManager.ts'
+import './zen-core/themeManager.js'
+import './zen-core/extensionManager.js'

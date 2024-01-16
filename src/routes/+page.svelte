@@ -1,2 +1,3 @@
-<h1>Xen</h1>
-<p>©2024 avnce inc. All rights reserved.</p>
+<div class="b">
+    <h1>Welcome to Zen</h1>
+</div>

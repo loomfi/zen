@@ -1,8 +1,9 @@
 <script lang="ts">
-    import { currentTheme } from "$lib/xen-core/themeManager";
+    import { currentTheme, changeTheme } from "$lib/zen-core/themeManager";
+    changeTheme('dark')
 </script>
 <head>
-    <title>Xen</title>
+    <title>Zen</title>
     <link rel="stylesheet" href={currentTheme() + "/index.css"}>
 </head>
 <body>

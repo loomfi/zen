@@ -20,5 +20,5 @@ export function currentTheme() {
  }
 
 export function changeTheme(theme_dir_name: string) {
-    themeDirectory.set(theme_dir_name)
+    themeDirectory.set(`/addons/themes/` + theme_dir_name)
 }
