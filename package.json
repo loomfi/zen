@@ -32,6 +32,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"adapter-node": "^0.1.0",
 		"detect-package-manager": "^3.0.1",
 		"dotenv": "^16.3.1",
 		"fs-extra": "^11.2.0"
