@@ -1,3 +1,8 @@
-<div class="b">
-    <h1>Welcome to Zen</h1>
-</div>
+<script>
+    import { currentTheme } from "$lib/zen-core/themeManager";
+</script>
+<head>
+    <link rel="stylesheet" href={currentTheme() + "/index.css"}>
+</head>
+
+<h1> Hello </h1>

@@ -1,14 +1,14 @@
 import { writable } from "svelte/store";
-import dotenv from 'dotenv';
-import fs from 'fs-extra'
-dotenv.config()
+import fs from 'fs'
 
-if (process.env.THEME_DIR_NAME == 'NaN' || process.env.THEME_DIR_NAME == undefined) {
+const THEME_DIR_NAME = import.meta.env
+
+if (THEME_DIR_NAME == 'NaN' || THEME_DIR_NAME == undefined) {
     fs.writeFileSync('.env', '');
     fs.appendFileSync('.env', 'THEME_DIR_NAME="light"\n');
     var theme = 'dark'
 } else {
-    theme = process.env.THEME_DIR_NAME
+    theme = THEME_DIR_NAME
 }
 
 export const themeDirectory = writable(`/addons/themes/` + theme)
