@@ -4,5 +4,6 @@
 <head>
     <link rel="stylesheet" href={currentTheme() + "/index.css"}>
 </head>
-
-<h1> Hello </h1>
+<main>
+    <h1>avnce introduces Zen</h1>
+</main>
