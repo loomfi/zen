@@ -2,3 +2,11 @@ body {
     background-color: black;
     color: white;
 }
+
+.login {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+#loadOverlay{display: none;}

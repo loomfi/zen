@@ -32,13 +32,20 @@
                         }
                     }
                     if (secure == true && secure != undefined) {
-                        document.cookie = `${cookie_name}=${cookie_value};expires=${d.toUTCString()};path=/; secure`;
+                        document.cookie = `${cookie_name}=${cookie_value};expires=${d.toUTCString()};path=/; secure; SameSite=strict`;
                     } else {
-                        document.cookie = `${cookie_name}=${cookie_value};expires=${d.toUTCString()};path=/;`;
+                        document.cookie = `${cookie_name}=${cookie_value};expires=${d.toUTCString()};path=/; SameSite=strict`;
                     }
                 } else {
-                    document.cookie = `${cookie_name}=${cookie_value};expires=0;path=/;`
+                    document.cookie = `${cookie_name}=${cookie_value};expires=0;path=/; SameSite=strict`
                 }
+            }
+            updateCookie(cookie_name: string, cookie_value: string, options: any) {
+                this.deleteCookie(cookie_name)
+                this.setCookie(cookie_name, cookie_value, options)
+            }
+            deleteCookie(cookie_name: string) {
+                document.cookie = `${cookie_name}=; Max-Age=-1`
             }
     }
 </script>
