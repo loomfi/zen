@@ -11,6 +11,9 @@ dependencies:
   axios:
     specifier: ^1.6.5
     version: 1.6.5
+  commander:
+    specifier: ^11.1.0
+    version: 11.1.0
   cookies:
     specifier: ^0.9.1
     version: 0.9.1
@@ -1034,6 +1037,11 @@ packages:
     engines: {node: '>= 0.8'}
     dependencies:
       delayed-stream: 1.0.0
+    dev: false
+
+  /commander@11.1.0:
+    resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
+    engines: {node: '>=16'}
     dev: false
 
   /commondir@1.0.1:
