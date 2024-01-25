@@ -30,6 +30,7 @@
             <input class="login-input" placeholder="Username" required>
             <input placeholder="Password" class="login-input" required>
             <button type="submit" class="login-button">Login</button>
+            
         </form>
     </div>
 </div>

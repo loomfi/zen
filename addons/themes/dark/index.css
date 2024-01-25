@@ -1,6 +1,20 @@
+/* Define font faces here */
+@font-face {
+    font-family: 'Poppins-logo';
+    src: url('/fonts/Poppins-SemiBold.ttf');
+}
+
+/* CSS Definition (Messy) */
+
 body {
     background-color: black;
     color: white;
+}
+
+.login-form-title {
+    font-family: 'Poppins-logo';
+    font-size: 50px;
+    margin: auto;
 }
 
 #login_img {
@@ -18,6 +32,7 @@ body {
     flex-direction: column;
     align-self: center;
     align-items: center;
+    margin: auto;
 }
 
 .login-form {
@@ -26,22 +41,26 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    gap: 10px;
     background-color: rgba(53, 53, 53, 0.926);
     border-radius: 10px;
     text-align: center;
-    padding: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 50px;
+    padding-bottom: 50px;
     z-index: 1;
+    height: 250px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .login-input {
+    gap: 100px;
     background-color: rgb(50, 50, 50);
     color: white;
     border-radius: 7px;
     text-align: center;
     border: none;
-    height: 30px;
+    height: 35px;
     transition: 500ms;
     width: 250px;
 }
@@ -50,8 +69,9 @@ body {
     transition: 500ms;
 }
 .login-button {
+    gap: 10px;
     transition: 500ms;
-    height: 30px;
+    height: 35px;
     width: 250px;
     background-color: green;
     border-radius: 7px;
